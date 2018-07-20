@@ -10,5 +10,30 @@
  *  7. If yes, log/alert win message and end game.
  * Game Controls
  *	8. Add "new game" button. Regenerate colors when button is clicked. Change text content when game ends.
- * 	9. Add "easy"/"hard" button options. Buttons set number of squares, n (3 or 6).
+ *  9. On page load, only display the number of squares equal to specified number in JS
+ * 10. Add "easy"/"hard" button options. Buttons change number of squares, n (3 or 6).
  */
+
+console.log("colorGame.js connected");
+
+// Declare and initialize variables
+var numSquares = 3, // "Easy" setting by default
+	random,
+	rgb = [0, 0, 0], // 3 item array of numbers, initially filled with 0s 
+	rgbStr;
+
+// Loop through squares
+for( var i = 0; i < numSquares; i++ ) {
+	// Loop through r-g-b numbers
+	for( var j = 0; j < rgb.length; j++ ) {
+
+		// Get random number between 0 and 255
+		random = Math.floor(Math.random() * 256);
+		// Assign number to current rgb array index
+		rgb[j] = random;
+	}
+
+	// Create rgb string for new rgb array
+	rgbStr = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+	console.log(rgbStr);
+}
