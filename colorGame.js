@@ -39,7 +39,7 @@ newGame();
 
 // Event Listeners
 // Loop through squares
-for ( var i = 0; i < numSquares; i++ ) {
+for ( var i = 0; i < squares.length; i++ ) {
 	// Add click event listener for each square
 	squares[i].addEventListener( "click", function() {
 		testSquare( this );
