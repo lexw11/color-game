@@ -14,13 +14,17 @@
  * 10. Add "easy"/"hard" button options. Buttons change number of squares, n (3 or 6).
  */
 
-console.log("colorGame.js connected");
-
 // Declare and initialize variables
-var numSquares = 3, // "Easy" setting by default
+var squares,
+	numSquares,
 	random,
 	rgb = [0, 0, 0], // 3 item array of numbers, initially filled with 0s 
 	rgbStr;
+
+// Select all squares in document
+squares = document.getElementsByClassName("square");
+// Get the number of squares
+numSquares = squares.length;
 
 // Loop through squares
 for( var i = 0; i < numSquares; i++ ) {
@@ -35,5 +39,7 @@ for( var i = 0; i < numSquares; i++ ) {
 
 	// Create rgb string for new rgb array
 	rgbStr = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
-	console.log(rgbStr);
+	// Assign square color
+	squares[i].style.backgroundColor = rgbStr;
+	console.log(squares[i].style.backgroundColor);
 }
