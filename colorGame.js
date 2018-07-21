@@ -19,7 +19,11 @@ var squares,
 	numSquares,
 	random,
 	rgb = [0, 0, 0], // 3 item array of numbers, initially filled with 0s 
-	rgbStr;
+	rgbStr,
+	colorsArr = [],
+	colorPrompt,
+	correctIndex,
+	correctColor;
 
 // Select all squares in document
 squares = document.getElementsByClassName("square");
@@ -36,10 +40,23 @@ for( var i = 0; i < numSquares; i++ ) {
 		// Assign number to current rgb array index
 		rgb[j] = random;
 	}
-
 	// Create rgb string for new rgb array
 	rgbStr = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+	// Add string to array
+	colorsArr.push(rgbStr);
 	// Assign square color
 	squares[i].style.backgroundColor = rgbStr;
-	console.log(squares[i].style.backgroundColor);
 }
+
+console.log(colorsArr);
+
+// Select a color from the assigned colors as the correct color
+correctIndex = Math.floor(Math.random() * numSquares);
+correctColor = colorsArr[correctIndex];
+
+// Get color-prompt HTML object
+colorPrompt = document.getElementById("color-prompt");
+
+// Display correct color rgb code
+colorPrompt.textContent = correctColor;
+console.log(correctColor);
