@@ -20,7 +20,7 @@
 
 // Declare and initialize variables
 var squares,
-	numSquares,
+	numSquares = 3,
 	random,
 	rgb = [0, 0, 0], // 3 item array of numbers, initially filled with 0s 
 	rgbStr,
@@ -28,18 +28,22 @@ var squares,
 	correctIndex,
 	correctColor,
 	message,
-	playAgain;
+	playAgain,
+	easyButton,
+	hardButton;
 
 // Get all squares in document
 squares = document.getElementsByClassName( "square" );
-// Get the number of squares
-numSquares = squares.length;
 
 // Get message HTML object
 message = document.getElementById( "message" );
 
 // Get play again button HTML object
 playAgain = document.getElementById( "play-again" );
+
+// Get easy and hard buttons
+easyButton = document.getElementById( "easy" );
+hardButton = document.getElementById( "hard" );
 
 newGame();
 
@@ -61,8 +65,14 @@ function newGame() {
 		colorsArr.push( rgbStr );
 		// Assign square color
 		squares[i].style.backgroundColor = rgbStr;
-		// Make all squares visible
+		// Make squares visible
 		squares[i].style.opacity = 1;
+	}
+
+	// Loop through unused squares (if in "easy" mode)
+	for( var i = numSquares; i < squares.length; i++) {
+		// Hide visible
+		squares[i].style.opacity = 0;
 	}
 
 	// Select a color from the assigned colors as the correct color
@@ -121,3 +131,14 @@ for ( var i = 0; i < numSquares; i++ ) {
 playAgain.addEventListener( "click", function() {
 	newGame();
 })
+
+// Select difficulty mode
+easyButton.addEventListener( "click", function() {
+	numSquares = 3;
+	newGame();
+});
+
+hardButton.addEventListener( "click", function() {
+	numSquares = 6;
+	newGame();
+});
