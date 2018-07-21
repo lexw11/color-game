@@ -24,7 +24,6 @@ var squares,
 	random,
 	rgb = [0, 0, 0], // 3 item array of numbers, initially filled with 0s 
 	rgbStr,
-	colorsArr = [],
 	colorPrompt,
 	correctIndex,
 	correctColor;
@@ -37,6 +36,7 @@ numSquares = squares.length;
 newGame();
 
 function newGame() {
+	var colorsArr = [];
 	// Loop through squares
 	for( var i = 0; i < numSquares; i++ ) {
 		// Loop through r-g-b numbers
@@ -54,6 +54,8 @@ function newGame() {
 		// Assign square color
 		squares[i].style.backgroundColor = rgbStr;
 	}
+
+	console.log(colorsArr);
 
 	// Select a color from the assigned colors as the correct color
 	correctIndex = Math.floor( Math.random() * numSquares );
@@ -74,6 +76,7 @@ for ( var i = 0; i < numSquares; i++ ) {
 
 	// Add click event listener for each square
 	squares[i].addEventListener( "click", function() {
+		console.log(this.style.backgroundColor);
 		// Check if square shows the rgb code color
 		if ( this.style.backgroundColor == correctColor ) {
 			console.log("Correct color!");
