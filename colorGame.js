@@ -26,12 +26,20 @@ var squares,
 	rgbStr,
 	colorPrompt,
 	correctIndex,
-	correctColor;
+	correctColor,
+	message,
+	playAgain;
 
-// Select all squares in document
-squares = document.getElementsByClassName("square");
+// Get all squares in document
+squares = document.getElementsByClassName( "square" );
 // Get the number of squares
 numSquares = squares.length;
+
+// Get message HTML object
+message = document.getElementById( "message" );
+
+// Get play again button HTML object
+playAgain = document.getElementById( "play-again" );
 
 newGame();
 
@@ -53,9 +61,9 @@ function newGame() {
 		colorsArr.push( rgbStr );
 		// Assign square color
 		squares[i].style.backgroundColor = rgbStr;
+		// Make all squares visible
+		squares[i].style.opacity = 1;
 	}
-
-	console.log(colorsArr);
 
 	// Select a color from the assigned colors as the correct color
 	correctIndex = Math.floor( Math.random() * numSquares );
@@ -66,6 +74,12 @@ function newGame() {
 
 	// Display correct color rgb code
 	colorPrompt.textContent = correctColor;
+
+	// Clear text from message element
+	message.textContent = "";
+
+	// Reset play again button text
+	playAgain.textContent = "New Game";
 }
 
 // ========================
@@ -77,17 +91,32 @@ for ( var i = 0; i < numSquares; i++ ) {
 	// Add click event listener for each square
 	squares[i].addEventListener( "click", function() {
 		console.log(this.style.backgroundColor);
+		
 		// Check if square shows the rgb code color
 		if ( this.style.backgroundColor == correctColor ) {
 			console.log("Correct color!");
+			// All squares become the correct color
+			for ( var j = 0; j < numSquares; j++ ) {
+				squares[j].style.backgroundColor = correctColor;
+			}
+
+			// Show win message
+			message.textContent = "You win!";
+
+			// Prompt play again
+			playAgain.textContent = "Play again?";
+
 		} else {
 			console.log("Try again");
+			// Square disappears
+			this.style.opacity = 0;
+
+			// Show win message
+			message.textContent = "Try again";
 		}
 	});
 }
 
-// Select play again button
-var playAgain = document.getElementById( "play-again" );
 // Restart game when button is clicked
 playAgain.addEventListener( "click", function() {
 	newGame();
