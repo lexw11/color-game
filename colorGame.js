@@ -14,6 +14,10 @@
  * 10. Add "easy"/"hard" button options. Buttons change number of squares, n (3 or 6).
  */
 
+// ========================
+// Initial Setup
+// ========================
+
 // Declare and initialize variables
 var squares,
 	numSquares,
@@ -30,33 +34,58 @@ squares = document.getElementsByClassName("square");
 // Get the number of squares
 numSquares = squares.length;
 
-// Loop through squares
-for( var i = 0; i < numSquares; i++ ) {
-	// Loop through r-g-b numbers
-	for( var j = 0; j < rgb.length; j++ ) {
+newGame();
 
-		// Get random number between 0 and 255
-		random = Math.floor(Math.random() * 256);
-		// Assign number to current rgb array index
-		rgb[j] = random;
+function newGame() {
+	// Loop through squares
+	for( var i = 0; i < numSquares; i++ ) {
+		// Loop through r-g-b numbers
+		for( var j = 0; j < rgb.length; j++ ) {
+
+			// Get random number between 0 and 255
+			random = Math.floor( Math.random() * 256 );
+			// Assign number to current rgb array index
+			rgb[j] = random;
+		}
+		// Create rgb string for new rgb array
+		rgbStr = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
+		// Add string to array
+		colorsArr.push( rgbStr );
+		// Assign square color
+		squares[i].style.backgroundColor = rgbStr;
 	}
-	// Create rgb string for new rgb array
-	rgbStr = "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
-	// Add string to array
-	colorsArr.push(rgbStr);
-	// Assign square color
-	squares[i].style.backgroundColor = rgbStr;
+
+	// Select a color from the assigned colors as the correct color
+	correctIndex = Math.floor( Math.random() * numSquares );
+	correctColor = colorsArr[ correctIndex ];
+
+	// Get color-prompt HTML object
+	colorPrompt = document.getElementById( "color-prompt" );
+
+	// Display correct color rgb code
+	colorPrompt.textContent = correctColor;
 }
 
-console.log(colorsArr);
+// ========================
+// Game Play
+// ========================
+// Loop through squares
+for ( var i = 0; i < numSquares; i++ ) {
 
-// Select a color from the assigned colors as the correct color
-correctIndex = Math.floor(Math.random() * numSquares);
-correctColor = colorsArr[correctIndex];
+	// Add click event listener for each square
+	squares[i].addEventListener( "click", function() {
+		// Check if square shows the rgb code color
+		if ( this.style.backgroundColor == correctColor ) {
+			console.log("Correct color!");
+		} else {
+			console.log("Try again");
+		}
+	});
+}
 
-// Get color-prompt HTML object
-colorPrompt = document.getElementById("color-prompt");
-
-// Display correct color rgb code
-colorPrompt.textContent = correctColor;
-console.log(correctColor);
+// Select play again button
+var playAgain = document.getElementById( "play-again" );
+// Restart game when button is clicked
+playAgain.addEventListener( "click", function() {
+	newGame();
+})
