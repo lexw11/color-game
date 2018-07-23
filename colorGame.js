@@ -77,6 +77,29 @@ function newGame() {
 
 	// Reset restart button text
 	restartButton.textContent = "New Game";
+
+	// Reset RGB prompt text color
+	colorPrompt.style.color = 'var(--header-color)';
+
+	// Highlight button that matched difficulty mode
+	if ( numSquares == 6 ) {
+		// Reset "East" button
+		easyButton.style.backgroundColor = 'var(--header-color)';
+		easyButton.style.color = '#fff';
+		
+		// Highlight "Hard" button
+		hardButton.style.backgroundColor = '#fff';
+		hardButton.style.color = 'var(--header-color)';
+
+	} else {
+		// Reset "Hard" button
+		hardButton.style.backgroundColor = 'var(--header-color)';
+		hardButton.style.color = '#fff';
+		
+		// Highlight "Easy" button
+		easyButton.style.backgroundColor = '#fff';
+		easyButton.style.color = 'var(--header-color)';
+	}
 }
 
 function testSquare( square ) {
@@ -86,6 +109,9 @@ function testSquare( square ) {
 		for ( var j = 0; j < numSquares; j++ ) {
 			squares[j].style.backgroundColor = correctColor;
 		}
+
+		// RGB prompt text becomes correct color
+		colorPrompt.style.color = correctColor;
 
 		// Show win message
 		message.textContent = "You win!";
@@ -112,6 +138,7 @@ function randomRgb() {
 	for( var j = 0; j < rgb.length; j++ ) {
 		// Get random number between 0 and 255
 		random = Math.floor( Math.random() * 256 );
+		
 		// Assign number to current rgb array index
 		rgb[j] = random;
 	}

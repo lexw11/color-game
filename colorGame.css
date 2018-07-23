@@ -60,6 +60,7 @@ button {
 	border: solid 1px;
 	padding: 0.5em;
 	border-radius: 0.25em;
+	font-weight: 700;
 }
 
 button + button {
@@ -73,7 +74,6 @@ button:hover {
 }
 
 button, #color-prompt {
-	font-weight: 700;
 	text-transform: uppercase;
 }
 
