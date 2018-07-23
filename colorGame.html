@@ -13,18 +13,26 @@
 	<title>Color Game</title>
 </head>
 <body>
-	<p id="color-prompt"></p>
-	<button id="restart"></button>
-	<button id="easy">Easy</button>
-	<button id="hard">Hard</button>
-	<p id="message"></p>
 	<div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
+		<div id="text" class="grid">
+			<h1 id="title" class="full-width">Color Guessing Game</h1>
+			<p id="description" class="full-width">Click on the square that matches the RGB color.</p>
+			<button id="restart"></button>
+			<p id="message"></p>
+			<button id="easy">Easy</button>
+			<button id="hard">Hard</button>
+			<p id="color-prompt" class="full-width"></p>
+		</div>
+	</div>
+	<div>
+		<div id="squares" class="grid">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
 	</div>
 	
 	<!-- Custom Javascript -->

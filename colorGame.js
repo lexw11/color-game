@@ -19,7 +19,7 @@
 // ========================
 
 // Declare and initialize variables
-var numSquares = 3, // Default is "easy" mode
+var numSquares = 6, // Default is "hard" mode
 	correctColor;
 
 // Query HTML objects

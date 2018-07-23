@@ -1,8 +1,104 @@
+:root {
+	--header-color: #5ea7e5;
+}
+
+body {
+	box-sizing: border-box;
+	background: #333;
+	color: #fff;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body * {
+	box-sizing: inherit;
+	text-align: center;
+}
+
+body > div:first-child {
+	background: var(--header-color);
+}
+
+.grid {
+	display: grid;
+}
+
+.full-width {
+	grid-column: 1 / 5;
+}
+
+#text, #squares {
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+	padding: 1em 0.5em;
+}
+
+#text {
+	grid-template-columns: auto 1fr auto auto;
+	justify-items: center;
+	align-items: center;
+}
+
+h1, p {
+	margin-top: 0;
+}
+
+h1, p, button {
+	margin-bottom: 1rem;
+}
+
+h1, #color-prompt {
+	font-size: 2em;
+}
+
+button {
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	background: inherit;
+	border: solid 1px;
+	padding: 0.5em;
+	border-radius: 0.25em;
+}
+
+button + button {
+	margin-left: 0.5em;
+}
+
+button:hover {
+	background: #fff;
+	color: var(--header-color);
+	cursor: pointer;
+}
+
+button, #color-prompt {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+#color-prompt {
+	color: var(--header-color);
+	background: #fff;
+	line-height: 1;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	margin-bottom: 0;
+}
+
+#message {
+	font-style: italic;
+}
+
+#squares {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1em;
+}
+
 .square {
-	display: inline-block;
-	width: 150px;
-	height: 150px;
-	background: #555;
-	margin: 2em;
+	width: 100%;
+	padding-bottom: 100%;
 	opacity: 0;
+	border-radius: 10%;
+	transition: opacity 0.5s;
 }
